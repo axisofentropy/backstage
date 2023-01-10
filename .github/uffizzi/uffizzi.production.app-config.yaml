@@ -28,13 +28,13 @@ backend:
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
 
 auth:
-  environment: production
+  environment: development
   providers:
     github:
-      production:
+      development:
         clientId: afe59a7afe911b5b0714
         clientSecret: aebd2b1a2412734a0d31b91b802a7b67a0a4d2e0
-          #callbackUrl: https://app.uffizzi.com/github.com/axisofentropy/backstage/pull/1/api/auth/github/handler/frame
+        callbackUrl: https://app.uffizzi.com/github.com/axisofentropy/backstage/pull/1/api/auth/github/handler/frame
 
 catalog:
   locations:
