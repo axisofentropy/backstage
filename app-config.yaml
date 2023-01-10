@@ -1,5 +1,5 @@
 app:
-  title: Example Backstage App
+  title: Backstage Example App
   baseUrl: http://localhost:3000
   #datadogRum:
   #  clientToken: '123456789'
