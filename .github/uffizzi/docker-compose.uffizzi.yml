@@ -13,7 +13,7 @@ services:
       POSTGRES_HOST: db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
-      NODE_ENV: production
+      NODE_ENV: development
     deploy:
       resources:
         limits:
