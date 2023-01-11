@@ -82,9 +82,12 @@ export const defaultCookieConfigurer: CookieConfigurer = ({
   // If the provider supports callbackUrls, the pathname will
   // contain the complete path to the frame handler so we need
   // to slice off the trailing part of the path.
+  /*
   const path = pathname.endsWith(`${providerId}/handler/frame`)
     ? pathname.slice(0, -'/handler/frame'.length)
     : `${pathname}/${providerId}`;
+  */
+  const path = `${pathname}/${providerId}`;
 
   return { domain, path, secure, sameSite };
 };
