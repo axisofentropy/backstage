@@ -85,7 +85,7 @@ jobs:
           GH_OAUTH_CLIENT_SECRET=${{ secrets.GH_OAUTH_CLIENT_SECRET }}
           export GH_OAUTH_CLIENT_SECRET
           # Render simple template from environment variables.
-          envsubst < .github/uffizzi/docker-compose.uffizzi.yml > docker-compose.rendered.yml
+          envsubst '${BACKSTAGE_IMAGE} ${GH_OAUTH_CLIENT_ID} ${GH_OAUTH_CLIENT_SECRET}' < .github/uffizzi/docker-compose.uffizzi.yml > docker-compose.rendered.yml
           cat docker-compose.rendered.yml
       - name: Upload Rendered Compose File as Artifact
         uses: actions/upload-artifact@v3
