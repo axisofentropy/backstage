@@ -278,7 +278,7 @@ export class OAuthAdapter implements AuthProviderRouteHandlers {
       maxAge: TEN_MINUTES_MS,
       ...this.baseCookieOptions,
       ...cookieConfig,
-      path: `${cookieConfig.path}/handler`,
+      path: `${cookieConfig.path}`,
     });
   };
 
