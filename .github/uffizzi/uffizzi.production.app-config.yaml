@@ -29,7 +29,12 @@ backend:
 
 auth:
   environment: production
-  providers: {}
+  providers:
+    github:
+      production:
+        clientId: ${GITHUB_OAUTH_CLIENT_ID}
+        clientSecret: ${GITHUB_OAUTH_CLIENT_SECRET}
+        callbackUrl: https://app.uffizzi.com/github.com/axisofentropy/backstage/pull/1/api/auth/github/handler/frame
 
 catalog:
   locations:
