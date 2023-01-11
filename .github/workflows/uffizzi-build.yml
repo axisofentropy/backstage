@@ -80,8 +80,12 @@ jobs:
         run: |
           BACKSTAGE_IMAGE=$(echo ${{ needs.build-backstage.outputs.tags }})
           export BACKSTAGE_IMAGE
+          GH_OAUTH_CLIENT_ID=${{ secrets.GH_OAUTH_CLIENT_ID }}
+          export GH_OAUTH_CLIENT_ID
+          GH_OAUTH_CLIENT_SECRET=${{ secrets.GH_OAUTH_CLIENT_SECRET }}
+          export GH_OAUTH_CLIENT_SECRET
           # Render simple template from environment variables.
-          envsubst '$BACKSTAGE_IMAGE' < .github/uffizzi/docker-compose.uffizzi.yml > docker-compose.rendered.yml
+          envsubst < .github/uffizzi/docker-compose.uffizzi.yml > docker-compose.rendered.yml
           cat docker-compose.rendered.yml
       - name: Upload Rendered Compose File as Artifact
         uses: actions/upload-artifact@v3

@@ -32,8 +32,8 @@ auth:
   providers:
     github:
       production:
-        clientId: afe59a7afe911b5b0714
-        clientSecret: aebd2b1a2412734a0d31b91b802a7b67a0a4d2e0
+        clientId: ${GITHUB_OAUTH_CLIENT_ID}
+        clientSecret: ${GITHUB_OAUTH_CLIENT_SECRET}
         callbackUrl: https://app.uffizzi.com/github.com/axisofentropy/backstage/pull/1/api/auth/github/handler/frame
 
 catalog:
