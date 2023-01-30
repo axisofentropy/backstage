@@ -89,10 +89,6 @@ jobs:
           name: preview-spec
           path: docker-compose.rendered.yml
           retention-days: 2
-      - name: Copy and Compact Event File
-        run: |
-          echo $GITHUB_EVENT_PATH
-          jq --compact-output . $GITHUB_EVENT_PATH > event.json
       - name: Upload PR Event as Artifact
         uses: actions/upload-artifact@v3
         with:
@@ -106,9 +102,6 @@ jobs:
     if: ${{ github.event.action == 'closed' }}
     steps:
       # If this PR is closing, we will not render a compose file nor pass it to the next workflow.
-      - name: Copy and Compact Event File
-        run: |
-          jq --compact-output . $GITHUB_EVENT_PATH > event.json
       - name: Upload PR Event as Artifact
         uses: actions/upload-artifact@v3
         with:
