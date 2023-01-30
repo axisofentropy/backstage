@@ -94,7 +94,9 @@ jobs:
         with:
           script: |
             var fs = require('fs');
-            fs.writeFile('event.json', JSON.stringify(context.payload), 'utf8');
+            fs.writeFile('event.json', JSON.stringify(context.payload), function(error) {
+              console.error(error);
+            });
             console.log(context.payload)
       - name: Upload PR Event as Artifact
         uses: actions/upload-artifact@v3
@@ -114,7 +116,9 @@ jobs:
         with:
           script: |
             var fs = require('fs');
-            fs.writeFile('event.json', JSON.stringify(context.payload), 'utf8');
+            fs.writeFile('event.json', JSON.stringify(context.payload), function(error) {
+              console.error(error);
+            });
       - name: Upload PR Event as Artifact
         uses: actions/upload-artifact@v3
         with:
