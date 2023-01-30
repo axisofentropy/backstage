@@ -93,6 +93,7 @@ jobs:
         run: |
           echo $GITHUB_EVENT_PATH
           cp $GITHUB_EVENT_PATH event.json
+          cat event.json
       - name: Upload PR Event as Artifact
         uses: actions/upload-artifact@v3
         with:
