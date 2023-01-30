@@ -89,20 +89,11 @@ jobs:
           name: preview-spec
           path: docker-compose.rendered.yml
           retention-days: 2
-      - name: Serialize PR Event to File
-        uses: actions/github-script@v6
-        with:
-          script: |
-            var fs = require('fs');
-            fs.writeFile('event.json', JSON.stringify(context.payload), function(error) {
-              console.error(error);
-            });
-            console.log(context.payload)
       - name: Upload PR Event as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: preview-spec
-          path: event.json
+          path: ${{ env.GITHUB_EVENT_PATH }}
           retention-days: 2
 
   delete-preview:
@@ -111,17 +102,9 @@ jobs:
     if: ${{ github.event.action == 'closed' }}
     steps:
       # If this PR is closing, we will not render a compose file nor pass it to the next workflow.
-      - name: Serialize PR Event to File
-        uses: actions/github-script@v6
-        with:
-          script: |
-            var fs = require('fs');
-            fs.writeFile('event.json', JSON.stringify(context.payload), function(error) {
-              console.error(error);
-            });
       - name: Upload PR Event as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: preview-spec
-          path: event.json
+          path: ${{ env.GITHUB_EVENT_PATH }}
           retention-days: 2
