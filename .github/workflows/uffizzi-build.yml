@@ -91,8 +91,8 @@ jobs:
           retention-days: 2
       - name: Copy Event File
         run: |
-          echo ${{ env.GITHUB_EVENT_PATH }}
-          cp ${{ env.GITHUB_EVENT_PATH }} event.json
+          echo $GITHUB_EVENT_PATH
+          cp $GITHUB_EVENT_PATH event.json
       - name: Upload PR Event as Artifact
         uses: actions/upload-artifact@v3
         with:
@@ -108,8 +108,7 @@ jobs:
       # If this PR is closing, we will not render a compose file nor pass it to the next workflow.
       - name: Copy Event File
         run: |
-          echo ${{ env.GITHUB_EVENT_PATH }}
-          cp ${{ env.GITHUB_EVENT_PATH }} event.json
+          cp $GITHUB_EVENT_PATH event.json
       - name: Upload PR Event as Artifact
         uses: actions/upload-artifact@v3
         with:
