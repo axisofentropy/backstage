@@ -89,11 +89,15 @@ jobs:
           name: preview-spec
           path: docker-compose.rendered.yml
           retention-days: 2
+      - name: Copy Event File
+        run: |
+          echo ${{ env.GITHUB_EVENT_PATH }}
+          cp ${{ env.GITHUB_EVENT_PATH }} event.json
       - name: Upload PR Event as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: preview-spec
-          path: ${{ env.GITHUB_EVENT_PATH }}
+          path: event.json
           retention-days: 2
 
   delete-preview:
@@ -102,9 +106,13 @@ jobs:
     if: ${{ github.event.action == 'closed' }}
     steps:
       # If this PR is closing, we will not render a compose file nor pass it to the next workflow.
+      - name: Copy Event File
+        run: |
+          echo ${{ env.GITHUB_EVENT_PATH }}
+          cp ${{ env.GITHUB_EVENT_PATH }} event.json
       - name: Upload PR Event as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: preview-spec
-          path: ${{ env.GITHUB_EVENT_PATH }}
+          path: event.json
           retention-days: 2
