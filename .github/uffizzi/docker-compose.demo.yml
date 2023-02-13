@@ -7,7 +7,7 @@ x-uffizzi:
 
 services:
   backstage:
-    image: ghcr.io/backstage/backstage:latest
+    image: registry.uffizzi.com/backstage/backstage:1.11.0-next.2
 
     environment:
       NODE_ENV: production
