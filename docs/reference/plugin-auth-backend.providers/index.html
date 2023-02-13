@@ -52,7 +52,7 @@
             signIn: {
                 resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./cloudflare-access"</span>).CloudflareAccessResult&gt;;
             };
-            cache?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"@backstage/backend-plugin-api"</span>).CacheClient | <span class="hljs-literal">undefined</span>;
+            cache?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"@backstage/backend-plugin-api"</span>).CacheService | <span class="hljs-literal">undefined</span>;
         }) =&gt; AuthProviderFactory;
         resolvers: Readonly&lt;{
             emailMatchingUserEntityProfileEmail: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;unknown&gt;;
@@ -189,9 +189,9 @@
                 });
               </script><script>
               var search = docsearch({
-                
-                apiKey: '8d115c9875ba0f4feaee95bab55a1645',
-                indexName: 'backstage',
+                appId: 'JCMFNHCHI8',
+                apiKey: '10b9e6c92a4513c1cf390f50e53aad1f',
+                indexName: 'backstage_io',
                 inputSelector: '#search_input_react'
               });
             </script></body></html>
