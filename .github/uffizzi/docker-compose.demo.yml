@@ -7,7 +7,7 @@ x-uffizzi:
 
 services:
   backstage:
-    image: registry.uffizzi.com/backstage/backstage:1.11.0-next.2
+    image: registry.uffizzi.com/backstage/backstage:demo
 
     environment:
       NODE_ENV: production
@@ -18,6 +18,4 @@ services:
     entrypoint: '/bin/sh'
     command:
       - '-c'
-      - "APP_CONFIG_app_baseUrl=$$UFFIZZI_URL APP_CONFIG_backend_baseUrl=$$UFFIZZI_URL APP_CONFIG_auth_environment='production' node packages/backend --config /app/config/uffizzi.demonstration.app-config.yaml"
-    volumes:
-      - "./demo/uffizzi.demonstration.app-config.yaml:/app/config/"
+      - "APP_CONFIG_app_baseUrl=$$UFFIZZI_URL APP_CONFIG_backend_baseUrl=$$UFFIZZI_URL APP_CONFIG_auth_environment='production' node packages/backend --config app-config.yaml"
