@@ -18,4 +18,6 @@ services:
     entrypoint: '/bin/sh'
     command:
       - '-c'
-      - "APP_CONFIG_app_baseUrl=$$UFFIZZI_URL APP_CONFIG_backend_baseUrl=$$UFFIZZI_URL APP_CONFIG_auth_environment='production' node packages/backend --config app-config.yaml"
+      - "APP_CONFIG_app_baseUrl=$$UFFIZZI_URL APP_CONFIG_backend_baseUrl=$$UFFIZZI_URL APP_CONFIG_auth_environment='production' node packages/backend --config /app/config/uffizzi.demonstration.app-config.yaml"
+    volumes:
+      - ".github/uffizzi/:/app/config/"
