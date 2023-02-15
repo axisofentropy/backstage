@@ -63,6 +63,9 @@ scorecards:
   jsonDataUrl: https://raw.githubusercontent.com/Oriflame/backstage-plugins/main/plugins/score-card/sample-data/
   wikiLinkTemplate: https://link-to-wiki/{id}
 
+sentry:
+  organization: my-company
+
 lighthouse:
   baseUrl: http://localhost:3003
 
@@ -136,6 +139,11 @@ costInsights:
       rate: 5.5
 pagerduty:
   eventsBaseUrl: 'https://events.pagerduty.com/v2'
+apacheAirflow:
+  baseUrl: https://your.airflow.instance.com
+
+gocd:
+  baseUrl: https://your.gocd.instance.com
 
 permission:
   enabled: true
