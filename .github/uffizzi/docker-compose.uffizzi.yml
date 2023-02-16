@@ -28,3 +28,7 @@ services:
     image: postgres
     environment:
       POSTGRES_PASSWORD: kiTMoTsiEuyQ43GrL4Hv
+    deploy:
+      resources:
+        limits:
+          memory: 250M
