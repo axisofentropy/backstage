@@ -22,7 +22,6 @@ jobs:
         with:
         path: backstage
           ref: v${{ github.event.client_payload.version }}
-          ref: master
 
       - name: use node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
