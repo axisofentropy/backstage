@@ -41,8 +41,6 @@ jobs:
         run: |
           cp -f ./.github/demo/uffizzi.demonstration.app-config.yaml ./app-config.yaml
           cp -a ./.github/demo/packages/* ./packages/
-          yarn workspace app add @spotify/backstage-plugin-pulse
-          yarn workspace backend add @spotify/backstage-plugin-pulse-backend
 
       - name: typescript build
         run: |
@@ -51,6 +49,8 @@ jobs:
       - name: backstage build
         run: |
           yarn workspace example-backend build
+          yarn workspace app add @spotify/backstage-plugin-pulse
+          yarn workspace backend add @spotify/backstage-plugin-pulse-backend
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
