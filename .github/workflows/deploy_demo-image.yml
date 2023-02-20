@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v3
         with:
         path: backstage
-          ref: v${{ github.event.client_payload.version }}
+        ref: v${{ github.event.client_payload.version }}
 
       - name: use node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
