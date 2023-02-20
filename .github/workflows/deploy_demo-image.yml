@@ -20,8 +20,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
         with:
-        path: backstage
-        ref: v${{ github.event.client_payload.version }}
+          ref: v${{ github.event.client_payload.version }}
+          # path: backstage
 
       - name: use node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -30,7 +30,7 @@ jobs:
           registry-url: https://registry.npmjs.org/ # Needed for auth
 
       - name: yarn install
-        uses: backstage/actions/yarn-install@v0.6.0
+        uses: backstage/actions/yarn-install@v0.6.2
         with:
           cache-prefix: ${{ runner.os }}-v${{ matrix.node-version }}
 
