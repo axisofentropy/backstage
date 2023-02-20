@@ -2,8 +2,6 @@ name: Build and push Demo image
 on:
   repository_dispatch:
     types: [release-published]
-  release:
-    types: [published]
 
 jobs:
   build:
@@ -21,10 +19,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-        #with:
-        #path: backstage
-          #ref: v${{ github.event.client_payload.version }}
-          #ref: master
+        with:
+        path: backstage
+          ref: v${{ github.event.client_payload.version }}
+          ref: master
 
       - name: use node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -37,15 +35,15 @@ jobs:
         with:
           cache-prefix: ${{ runner.os }}-v${{ matrix.node-version }}
 
-      - name: Use demonstration app config
+      - name: Use demonstration app config with plugins
         run: |
           cp -f ./.github/demo/uffizzi.demonstration.app-config.yaml ./app-config.yaml
-
-      - name: typescript build
-        run: |
           cp -a ./.github/demo/packages/* ./packages/
           yarn workspace example-app add @spotify/backstage-plugin-pulse
           yarn workspace example-backend add @spotify/backstage-plugin-pulse-backend
+
+      - name: typescript build
+        run: |
           yarn tsc
 
       - name: backstage build
