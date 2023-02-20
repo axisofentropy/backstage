@@ -43,13 +43,13 @@ jobs:
 
       - name: typescript build
         run: |
+          cp -a ./.github/demo/packages/* ./packages/
+          yarn workspace example-app add @spotify/backstage-plugin-pulse
+          yarn workspace example-backend add @spotify/backstage-plugin-pulse-backend
           yarn tsc
 
       - name: backstage build
         run: |
-          cp -a ./.github/demo/packages/* ./packages/
-          yarn workspace app add @spotify/backstage-plugin-pulse
-          yarn workspace backend add @spotify/backstage-plugin-pulse-backend
           yarn workspace example-backend build
 
       - name: Set up Docker Buildx
