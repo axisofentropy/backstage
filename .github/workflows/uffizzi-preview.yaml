@@ -54,8 +54,8 @@ jobs:
       - name: Read Event into ENV
         run: |
           echo PR_NUMBER=$(jq '.number | tonumber' < event.json) >> $GITHUB_ENV
-          echo ACTION=$(jq '.action | tostring | [scan("\\w+")][0]' < event.json) >> $GITHUB_ENV
-          echo GIT_REF=$(jq '.pull_request.head.sha | tostring | [scan("\\w+")][0]' < event.json) >> $GITHUB_ENV
+          echo ACTION=$(jq --raw-output '.action | tostring | [scan("\\w+")][0]' < event.json) >> $GITHUB_ENV
+          echo GIT_REF=$(jq --raw-output '.pull_request.head.sha | tostring | [scan("\\w+")][0]' < event.json) >> $GITHUB_ENV
 
       - name: Hash Rendered Manifests File
         id: hash
