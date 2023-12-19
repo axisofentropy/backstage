@@ -48,8 +48,8 @@ jobs:
             let fs = require('fs');
             fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/preview-spec.zip`, Buffer.from(download.data));
 
-      - name: 'Unzip artifact'
-        run: unzip preview-spec.zip event.json manifests.rendered.yml
+      - name: 'Accept event from first stage'
+        run: unzip preview-spec.zip event.json
 
       - name: Read Event into ENV
         run: |
@@ -62,6 +62,7 @@ jobs:
         # If the previous workflow was triggered by a PR close event, we will not have a manifests file artifact.
         if: ${{ env.ACTION != 'closed' }}
         run: |
+          unzip preview-spec.zip manifests.rendered.yml
           ls
           echo "MANIFESTS_FILE_HASH=$(md5sum manifests.rendered.yml | awk '{ print $1 }')" >> $GITHUB_ENV
 
