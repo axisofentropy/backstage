@@ -79,7 +79,7 @@ jobs:
           echo "PR number: ${{ env.PR_NUMBER }}"
           echo "Git Ref: ${{ env.GIT_REF }}"
           echo "Action: ${{ env.ACTION }}"
-          echo "Manifests file hash: ${{ env.MANIFESTS_FILE_HASH }}"
+          echo "Manifests File Hash: ${{ env.MANIFESTS_FILE_HASH }}"
           cat event.json
 
   deploy-uffizzi-preview:
