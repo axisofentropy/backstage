@@ -152,7 +152,7 @@ jobs:
           export KUBECONFIG=`pwd`/kubeconfig
           kubectl apply -f manifests.rendered.yml --kubeconfig ./kubeconfig
           # Allow uffizzi to sync the resources
-          sleep 10
+          sleep 11
           # Get the hostnames assigned by uffizzi
           export BACKSTAGE_HOST=$(kubectl get ingress backstage --kubeconfig kubeconfig -o json | jq '.spec.rules[0].host' | tr -d '"')
           export UFFIZZI_CLUSTER_APISERVER=$(kubectl config view --minify | grep server | cut -f 2- -d ":" | tr -d " ")
